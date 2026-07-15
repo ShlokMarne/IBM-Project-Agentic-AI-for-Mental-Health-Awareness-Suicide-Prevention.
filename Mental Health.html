@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindCare | Mental Health Awareness</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f9ff;
+color:#333;
+}
+
+/* Navigation */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#1976d2;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+nav h2{
+color:white;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:yellow;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80");
+background-size:cover;
+background-position:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.hero p{
+margin:20px 0;
+font-size:20px;
+}
+
+.hero button{
+padding:15px 30px;
+border:none;
+background:#ff9800;
+color:white;
+font-size:18px;
+cursor:pointer;
+border-radius:30px;
+transition:.4s;
+}
+
+.hero button:hover{
+background:#ff5722;
+}
+
+/* Sections */
+
+section{
+padding:80px 10%;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+color:#1565c0;
+font-size:35px;
+}
+
+/* Cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+color:#1976d2;
+margin-bottom:15px;
+}
+
+/* Quiz */
+
+.quiz{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.question{
+margin:20px 0;
+}
+
+button.submit{
+margin-top:20px;
+padding:15px;
+background:#1976d2;
+color:white;
+border:none;
+font-size:18px;
+width:100%;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+}
+
+/* Quote */
+
+.quote{
+background:#1976d2;
+color:white;
+padding:40px;
+text-align:center;
+font-size:28px;
+font-style:italic;
+}
+
+/* Contact */
+
+form{
+max-width:600px;
+margin:auto;
+}
+
+input,textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+
+input[type=submit]{
+background:#1976d2;
+color:white;
+cursor:pointer;
+}
+
+input[type=submit]:hover{
+background:#1257a6;
+}
+
+footer{
+background:#0d47a1;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.emergency{
+background:#ffebee;
+border-left:8px solid red;
+padding:20px;
+font-size:18px;
+line-height:1.8;
+}
+
+.highlight{
+color:red;
+font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+  window.wxOConfiguration = {
+    orchestrationID: "00bee7456e8f4411a3618b7b3d89fc3f_a9431c42-ac93-4ceb-8a22-902dfd7175a2",
+    hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+    rootElementID: "root",
+    deploymentPlatform: "ibmcloud",
+    crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/00bee7456e8f4411a3618b7b3d89fc3f:a9431c42-ac93-4ceb-8a22-902dfd7175a2::",
+    chatOptions: {
+        agentId: "896d117e-7cd2-4170-8253-63467c709f64", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+
+<nav>
+<h2>MindCare</h2>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#signs">Signs</a></li>
+<li><a href="#quiz">Quiz</a></li>
+<li><a href="#help">Help</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div>
+
+<h1>You Are Never Alone ❤️</h1>
+
+<p>Your mental health matters. Seeking help is a sign of strength, not weakness.</p>
+
+<button onclick="document.getElementById('about').scrollIntoView()">
+Learn More
+</button>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About Mental Health</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Depression</h3>
+<p>
+Depression affects millions worldwide and causes persistent sadness, hopelessness, and loss of interest.
+</p>
+</div>
+
+<div class="card">
+<h3>Anxiety</h3>
+<p>
+Anxiety disorders involve excessive fear, nervousness, panic attacks, and constant worrying.
+</p>
+</div>
+
+<div class="card">
+<h3>Self Care</h3>
+<p>
+Healthy sleep, exercise, mindfulness, talking with loved ones, and professional support improve wellbeing.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="signs">
+
+<h2>Warning Signs</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Behavioral</h3>
+
+<ul>
+<li>Isolation</li>
+<li>Loss of interest</li>
+<li>Mood swings</li>
+<li>Aggression</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>Emotional</h3>
+
+<ul>
+<li>Hopelessness</li>
+<li>Feeling worthless</li>
+<li>Persistent sadness</li>
+<li>Frequent crying</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>Physical</h3>
+
+<ul>
+<li>Sleeping too much</li>
+<li>Insomnia</li>
+<li>Fatigue</li>
+<li>Loss of appetite</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="quiz">
+
+<h2>Quick Wellness Check</h2>
+
+<div class="quiz">
+
+<div class="question">
+1. Have you felt sad most days recently?
+<br>
+<input type="radio" name="q1" value="1"> Yes
+<input type="radio" name="q1" value="0"> No
+</div>
+
+<div class="question">
+2. Are you struggling with sleep?
+<br>
+<input type="radio" name="q2" value="1"> Yes
+<input type="radio" name="q2" value="0"> No
+</div>
+
+<div class="question">
+3. Have you lost interest in activities?
+<br>
+<input type="radio" name="q3" value="1"> Yes
+<input type="radio" name="q3" value="0"> No
+</div>
+
+<div class="question">
+4. Do you feel anxious frequently?
+<br>
+<input type="radio" name="q4" value="1"> Yes
+<input type="radio" name="q4" value="0"> No
+</div>
+
+<button class="submit" onclick="calculate()">
+Check Result
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Coping Strategies</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🧘 Meditation</h3>
+<p>Practice mindfulness for 10–15 minutes daily.</p>
+</div>
+
+<div class="card">
+<h3>🏃 Exercise</h3>
+<p>Physical activity boosts serotonin and improves mood.</p>
+</div>
+
+<div class="card">
+<h3>👨‍👩‍👧 Talk</h3>
+<p>Share your feelings with someone you trust.</p>
+</div>
+
+<div class="card">
+<h3>📖 Journal</h3>
+<p>Writing emotions helps reduce stress.</p>
+</div>
+
+</div>
+
+</section>
+
+<div class="quote">
+
+<p id="quote"></p>
+
+</div>
+
+<section id="help">
+
+<h2>Emergency Help</h2>
+
+<div class="emergency">
+
+<p>
+If you or someone you know is experiencing thoughts of suicide or is in immediate danger, please seek urgent assistance from local emergency services or a trusted mental health professional. Reaching out for help can make a critical difference.
+</p>
+
+<p class="highlight">
+Remember:
+You matter.
+Your life has value.
+Help is available.
+</p>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<form onsubmit="send(event)">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Email" required>
+
+<textarea rows="5" placeholder="Share your thoughts..."></textarea>
+
+<input type="submit" value="Send">
+
+</form>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 MindCare | Mental Health Awareness & Suicide Prevention
+</p>
+
+</footer>
+
+<script>
+
+const quotes=[
+
+"Every day may not be good, but there is something good in every day.",
+
+"You are stronger than you think.",
+
+"Your feelings are valid.",
+
+"It is okay to ask for help.",
+
+"Small steps every day lead to big changes.",
+
+"Hope is stronger than fear."
+
+];
+
+let i=0;
+
+function rotateQuote(){
+
+document.getElementById("quote").innerHTML=quotes[i];
+
+i++;
+
+if(i>=quotes.length)
+i=0;
+
+}
+
+rotateQuote();
+
+setInterval(rotateQuote,3000);
+
+function calculate(){
+
+let score=0;
+
+["q1","q2","q3","q4"].forEach(q=>{
+
+let ans=document.querySelector('input[name="'+q+'"]:checked');
+
+if(ans)
+score+=Number(ans.value);
+
+});
+
+let result=document.getElementById("result");
+
+if(score<=1){
+
+result.innerHTML="😊 Your responses suggest you may be doing well. Continue practicing self-care.";
+
+}
+else if(score<=3){
+
+result.innerHTML="🙂 You may be experiencing some stress. Consider talking to someone you trust or a mental health professional.";
+
+}
+else{
+
+result.innerHTML="❤️ Your responses suggest you may be going through a difficult time. Please consider reaching out to a trusted person or a qualified mental health professional for support. If you feel you are in immediate danger, contact your local emergency services.";
+
+}
+
+}
+
+function send(e){
+
+e.preventDefault();
+
+alert("Thank you for reaching out. Remember, you are never alone. ❤️");
+
+e.target.reset();
+
+}
+
+</script>
+
+</body>
+</html>
